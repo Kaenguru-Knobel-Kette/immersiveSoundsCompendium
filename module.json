@@ -1,0 +1,12 @@
+{
+  "id": "immersiveSoundsCompendium",
+  "name": "Immersive Sounds Compendium",
+  "author": "thetrader",
+  "version": "1.0.0",
+  "released": "12/14/2018",
+  "updated": "12/14/2018",
+  "description": "Assigns the new sounds from Immersive Sounds Compendium to armors, weapons and miscellaneous items.",
+  "requires": ["unifiedPatchingFramework"],
+  "moduleLoader": "UPF",
+  "canHotLoad": true
+}
