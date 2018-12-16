@@ -7,7 +7,7 @@ registerPatcher({
 		templateUrl: `${patcherUrl}/partials/settings.html`,
 		defaultSettings: {}
 	},
-	requiredFiles: ['Immersive Sounds - Compendium.esp'],
+	requiredFiles: ['Skyrim.esm', 'Immersive Sounds - Compendium.esp'],
 	getFilesToPatch: function(filenames) {
 		return filenames;
 	},

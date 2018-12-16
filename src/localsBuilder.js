@@ -1,25 +1,20 @@
 localsBuilder = {
 	setLocals: function(patch, helpers, settings, locals) {
+		let skyrim = xelib.FileByName('Skyrim.esm');
 		let isc = xelib.FileByName('Immersive Sounds - Compendium.esp');
 
-		let battleaxeImpact = xelib.GetRecord(isc, 0x041E6B31);
-		let battleaxeBoundImpact = xelib.GetRecord(isc, 0x0404C731);
-		let warhammerImpact = xelib.GetRecord(isc, 0x041F5E3B);
-		let necklaceUp = xelib.GetRecord(isc, 0x0408AB15);
-		let necklaceDown = xelib.GetRecord(isc, 0x0408AB16);
-		let ringUp = xelib.GetRecord(isc, 0x0408AB14);
-		let gemUp = xelib.GetRecord(isc, 0x0408AB13);
-		let gemDown = xelib.GetRecord(isc, 0x0408AB18);
-		let lockpickUp = xelib.GetRecord(isc, 0x0408AB17);
+		let skyrimIndex = xelib.Hex(xelib.GetFileLoadOrder(skyrim), 2);
+		let iscIndex = xelib.Hex(xelib.GetFileLoadOrder(isc), 2);
 		
-		locals.battleaxeImpact = xelib.GetHexFormID(battleaxeImpact, false, false);
-		locals.battleaxeBoundImpact = xelib.GetHexFormID(battleaxeBoundImpact, false, false);
-		locals.warhammerImpact = xelib.GetHexFormID(warhammerImpact, false, false);
-		locals.necklaceUp = xelib.GetHexFormID(necklaceUp, false, false);
-		locals.necklaceDown = xelib.GetHexFormID(necklaceDown, false, false);
-		locals.ringUp = xelib.GetHexFormID(ringUp, false, false);
-		locals.gemUp = xelib.GetHexFormID(gemUp, false, false);
-		locals.gemDown = xelib.GetHexFormID(gemDown, false, false);
-		locals.lockpickUp = xelib.GetHexFormID(lockpickUp, false, false);
+		locals.lockpick = `${skyrimIndex}00000A`;
+		locals.lockpickUp = `${iscIndex}08AB17`;
+		locals.battleaxeImpact = `${iscIndex}1E6B31`;
+		locals.battleaxeBoundImpact = `${iscIndex}04C731`;
+		locals.warhammerImpact = `${iscIndex}1F5E3B`;
+		locals.necklaceUp = `${iscIndex}08AB15`;
+		locals.necklaceDown = `${iscIndex}08AB16`;
+		locals.ringUp = `${iscIndex}08AB14`;
+		locals.gemUp = `${iscIndex}08AB13`;
+		locals.gemDown = `${iscIndex}08AB18`;
 	}
 }

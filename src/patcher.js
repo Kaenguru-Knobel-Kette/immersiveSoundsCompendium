@@ -80,7 +80,7 @@ patcher = {
 			return {
 				signature: 'MISC',
 				filter: function(record) {
-					return (xelib.GetFormID(record, false, false) === 0x0000000A);
+					return (xelib.GetHexFormID(record, false, false) === locals.lockpick);
 				}
 			}
 		},
