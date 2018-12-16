@@ -4,18 +4,14 @@ patcher = {
 			return {
 				signature: 'WEAP',
 				filter: function(record) {
-					return xelib.HasKeyword(record, 'WeapTypeBattleaxe') &&
-						!xelib.HasElement(record, 'CNAM');
+					return !xelib.HasElement(record, 'CNAM') &&
+						xelib.HasKeyword(record, 'WeapTypeBattleaxe') &&
+						!xelib.GetFlag(record, 'DNAM\\Flags2', 'Bound Weapon');
 				}
 			}
 		},
 		patch: function(record, helpers, settings, locals) {
-			if (xelib.GetFlag(record, 'DNAM\\Flags2', 'Bound Weapon')) {
-				xelib.AddElementValue(record, 'TNAM', locals.battleaxeBoundImpact);
-			}
-			else {
-				xelib.AddElementValue(record, 'TNAM', locals.battleaxeImpact);
-			}
+			xelib.AddElementValue(record, 'TNAM', locals.battleaxeFail);
 		}
 	},
 	warhammer: {
@@ -23,13 +19,32 @@ patcher = {
 			return {
 				signature: 'WEAP',
 				filter: function(record) {
-					return xelib.HasKeyword(record, 'WeapTypeWarhammer') &&
-						!xelib.HasElement(record, 'CNAM');
+					return !xelib.HasElement(record, 'CNAM') &&
+						xelib.HasKeyword(record, 'WeapTypeWarhammer');
 				}
 			}
 		},
 		patch: function(record, helpers, settings, locals) {
-			xelib.AddElementValue(record, 'TNAM', locals.warhammerImpact);
+			xelib.AddElementValue(record, 'TNAM', locals.warhammerFail);
+		}
+	},
+	boundWeapon: {
+		load: function(plugin, helpers, settings, locals) {
+			return {
+				signature: 'WEAP',
+				filter: function(record) {
+					return !xelib.HasElement(record, 'CNAM') &&
+						xelib.GetFlag(record, 'DNAM\\Flags2', 'Bound Weapon');
+				}
+			}
+		},
+		patch: function(record, helpers, settings, locals) {
+			if (xelib.HasKeyword(record, 'WeapTypeSword')) {
+				xelib.AddElementValue(record, 'TNAM', locals.boundSwordFail);
+			}
+			else if (xelib.HasKeyword(record, 'WeapTypeBattleaxe')) {
+				xelib.AddElementValue(record, 'TNAM', locals.boundBattleaxeFail);
+			}
 		}
 	},
 	necklace: {
@@ -37,8 +52,8 @@ patcher = {
 			return {
 				signature: 'ARMO',
 				filter: function(record) {
-					return xelib.HasKeyword(record, 'ClothingNecklace') &&
-						!xelib.HasElement(record, 'TNAM');
+					return !xelib.HasElement(record, 'TNAM') &&
+						xelib.HasKeyword(record, 'ClothingNecklace');
 				}
 			}
 		},
@@ -52,8 +67,8 @@ patcher = {
 			return {
 				signature: 'ARMO',
 				filter: function(record) {
-					return xelib.HasKeyword(record, 'ClothingRing') &&
-						!xelib.HasElement(record, 'TNAM');
+					return !xelib.HasElement(record, 'TNAM') &&
+						xelib.HasKeyword(record, 'ClothingRing');
 				}
 			}
 		},
@@ -80,7 +95,7 @@ patcher = {
 			return {
 				signature: 'MISC',
 				filter: function(record) {
-					return (xelib.GetHexFormID(record, false, false) === locals.lockpick);
+					return xelib.GetHexFormID(record, false, false) === locals.lockpick;
 				}
 			}
 		},

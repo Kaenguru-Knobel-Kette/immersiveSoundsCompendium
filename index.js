@@ -18,6 +18,7 @@ registerPatcher({
 		process: [
 			patcher.battleaxe,
 			patcher.warhammer,
+			patcher.boundWeapon,
 			patcher.necklace,
 			patcher.gem,
 			patcher.ring,

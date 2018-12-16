@@ -8,9 +8,10 @@ localsBuilder = {
 		
 		locals.lockpick = `${skyrimIndex}00000A`;
 		locals.lockpickUp = `${iscIndex}08AB17`;
-		locals.battleaxeImpact = `${iscIndex}1E6B31`;
-		locals.battleaxeBoundImpact = `${iscIndex}04C731`;
-		locals.warhammerImpact = `${iscIndex}1F5E3B`;
+		locals.battleaxeFail = `${iscIndex}1E6B31`;
+		locals.warhammerFail = `${iscIndex}1F5E3B`;
+		locals.boundBattleaxeFail = `${iscIndex}04C731`;
+		locals.boundSwordFail = `${iscIndex}04762F`;
 		locals.necklaceUp = `${iscIndex}08AB15`;
 		locals.necklaceDown = `${iscIndex}08AB16`;
 		locals.ringUp = `${iscIndex}08AB14`;
